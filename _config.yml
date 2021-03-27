@@ -1,24 +1,46 @@
-title: Parchment
-author: pro-panda
-subtitle: The life of a frustrated engineer
+title: ZhichenRen's Blog
+author: Zhichen Ren
+email: zhichenren0124@gmail.com
+description: > # this means to ignore newlines until "show_exerpts:"
+  Write an awesome description for your new site here. You can edit this
+  line in _config.yml. It will appear in your document head meta (for
+  Google search results) and in your feed.xml site description.
+show_excerpts: true # set to true to show excerpts on the homepage
+base_url: /texture
+url: ZhichenRen.github.io
 
-url: "https://pro-panda.github.io"
-baseurl: "/parchment"
-
-footer_only_homepage: true
-footer_url: "https://github.com/pro-panda"
-footer_text: "Theme by pro-panda"
-
-profile-picture: assets/profile.png
-favicon_location: assets/favicon.ico
-
-permalink: /:year-:month-:day-:title/
+remote_theme: thelehhman/texture
+theme: texture
+# Minima date format
+# refer to http://shopify.github.io/liquid/filters/date/ if you want to customize this
 sass:
-    style: compressed
-    sass_dir: css
+  sass_dir: _sass
 
-navbar:
- - name: "About"
-   link: "about"
- - name: "Resume"
-   absolute-link: "https://pro-panda.github.io/resume.pdf"
+permalink: /posts/:title/
+texture:
+  title: ZhichenRen's Blog
+  tagline: Developer
+  date_format: "%b %-d, %Y"
+  style: black
+  showNav: false
+  showPicker: false
+
+  # generate social links in footer
+  social_links:
+    twitter: thelehhman
+    github:  thelehhman
+    linkedIn: in/thelehhman
+    rss: rss
+ 
+
+# If you want to link only specific pages in your header, uncomment
+# this and add the path to the pages in order as they should show up
+#header_pages:
+# - about.md
+
+# Build settings
+# theme: texture
+
+plugins:
+  - jekyll-seo-tag
+#  - jekyll-feed
