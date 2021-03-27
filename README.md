@@ -1,150 +1,37 @@
-# texture
+# Parchment
+A clean, single column blog template built for jekyll
 
-A configurable jekyll theme for simply beautiful blogs.
-
-**Demo**: [thelehhman.com/texture](https://thelehhman.com/texture)
-
-![texture theme preview](/screen1.png)
-
-
-## Installation on Github Pages
-
-Add this line to your site's `_config.yml`:
-```yaml
-remote_theme: thelehhman/texture
-```
-
-**NOTE: If you are forking this repo, remove `base_url: /texture` in the `_config.yml` which is required to load the required website assets**
-## Installation
-
-Add this line to your Jekyll site's `Gemfile`:
-
-```ruby
-gem "texture"
-```
-
-And add this line to your Jekyll site's `_config.yml`:
-
-```yaml
-theme: texture
-```
-
-And then execute:
-
-    $ bundle
-
-Or install it yourself as:
-
-    $ gem install texture
+## Building Locally
+* Clone the repository
+* Run `bundle install`
+* Run `bundle exec jekyll serve`
+* Visit browser at `http://127.0.0.1:4000/parchment/`
 
 ## Usage
 
-The "texture" key in _config.yml is used to customize the theme data.
-```yaml
-texture:
-  title: Adam Denisov
-  tagline: Developer. Designer
-  date_format: "%b %-d, %Y"
+* To use this as your GitHub Page, fork this repository, and
+  rename it to `<username>.github.io`. Your site will be live
+  at `https://<username>.github.io/parchment-jekyll`.
 
-  social_links:
-    twitter: thelehhman
-    github:  thelehhman
-    linkedIn: in/thelehhman # format: locale/username
-```
+* You can customise variables in `_config.yml` and `css/*` files.
 
-**Styling**
+* You can add markdown files, say `foo.md` in the root directory
+  of the repository. It will then be accessible like
+  `your.website.com/foo`.
 
-Multiple header styles are supported using the "style" property under texture in `_config.yml`.
+* To add posts, add your posts in the `_posts` directory. Follow
+  the naming convention `%yyyy-%mm-%dd-your-title-here.md`.
 
-```yaml
-texture:
-  style: [yellow|red|black|blue|green|purple]
-```
-
-For example, the blue style looks like this:
-
-![texture theme blue](/screen2.png)
-
-
-**Texture Picker**
-
-You can toggle the texture picker to show/experiment various textures on your site using the showPicker variable. Remember to make it `false` for production.
-
-```yaml
-texture:
-  showPicker: [false|true] # show the texture selector(development purposes)
-```
-
-**Comments (Disqus)**
-
-Comments on posts can be enabled by specifying your disqus_shortname under texture in `_config.yml`. For example,
-```yaml
-texture:
-  disqus_shortname: games
-```
-
-**Google Analytics**
-
-It can be enabled by specifying your analytics id under texture in `_config.yml`
-```yaml
-texture:
-  analytics_id: '< YOUR ID >'
-```
-
-**Excerpts**
-
-Excerpts can be enabled by adding the following line to your `_config.yml`
-```yaml
-show_excerpts: true
-```
-
-**Toggle Navbar**
-
-```yaml
-texture:
-  showNav: true
-```
-
-**Navigation**
-
-After setting `showNav` to true navigation can be built by adding the following to your `_config.yml`
-
-```yaml
-texture:
-  navigation:
-    - title: My Work
-      url: "/my-work"
-    - title: Resume
-      url: "/resume"
-```
-
-**Layouts**
-
-- Home
-- Page
-- Post
+* To add a profile picture, use class `profile-picture` around
+  the image.
 
 ## Contributing
+Pull requests are welcome. For major changes, please open an
+issue first to discuss what you would like to change.
 
-Bug reports and pull requests are welcome on GitHub at https://github.com/thelehhman/texture. This project is intended to be a safe, welcoming space for collaboration, and contributors are expected to adhere to the [Contributor Covenant](http://contributor-covenant.org) code of conduct.
-
-## Development
-
-To set up your environment to develop this theme, run `bundle install`.
-
-Your theme is setup just like a normal Jekyll site! To test your theme, run `bundle exec jekyll serve` and open your browser at `http://localhost:4000`. This starts a Jekyll server using your theme. Add pages, documents, data, etc. like normal to test your theme's contents. As you make modifications to your theme and to your content, your site will regenerate and you should see the changes in the browser after a refresh, just like normal.
-
-When your theme is released, only the files in `_layouts`, `_includes`, `_sass` and `assets` tracked with Git will be bundled.
-To add a custom directory to your theme-gem, please edit the regexp in `texture.gemspec` accordingly.
-
-## Donation
-If this project help you reduce time to develop, you can give me a cup of coffee :) 
-
-[![paypal](https://www.paypalobjects.com/en_US/i/btn/btn_donateCC_LG.gif)](https://paypal.me/thelehhman)
+## Credits
+Parchment is inspired from the resume theme
+[Researcher](https://github.com/ankitsultana/researcher)
 
 ## License
-
-The theme is available as open source under the terms of the [MIT License](https://opensource.org/licenses/MIT).
-
-## More Themes
-[plainwhite](https://github.com/thelehhman/plainwhite-jekyll)
+[GNU GPL v3](LICENSE)
