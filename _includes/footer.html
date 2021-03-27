@@ -1,12 +1,8 @@
-<footer id="bottom">
-  <br>
-  <span>{{ site.title }} ©
-  {% assign current = "now" | date: "%Y" | plus: 0%}
-  {% unless site.footer.since and site.footer.since == current %}
-    {{ site.footer.since }}
-    -
-  {% endunless %}
-  {{ current }}
-  <br>
-  Powered by <a href="https://www.jekyll.com.cn/">Jekyll</a> | <a href="https://github.com/xukimseven/HardCandy-Jekyll">HardCandy-Jekyll</a></span>
+<footer class="footer">
+  <div>
+    &copy; {{ site.time | date: '%Y' }} {{ site.user.name }}.
+    Powered by <a href="http://jekyllrb.com" target="_blank">Jekyll</a>.
+    Get this theme
+    <a href="https://github.com/starry99/catbook" target="_blank">here</a>.
+  </div>
 </footer>

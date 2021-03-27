@@ -1,19 +1,36 @@
-<header id="index-header">
-  <div class="top-center">
-      <div class="logo">
-          <a href="{{ "/" | relative_url }}" title="my awesome webtitle">{{ site.webtitle }}</a>
-      </div>
-      <nav class="top-nav">
-          <ul>
-              {% for i in site.nav %}
-                <li><a href="{{ i[1] }}">{{ i[0] }}</a></li>
-              {% endfor %}
-          </ul>
-      </nav>
-      <div id="top-boot">
-        <a href="javascript:;" id="boot1" style="display:block;" onclick="document.getElementById('boot-area').style.display='block';document.getElementById('boot1').style.display='none';document.getElementById('boot2').style.display='block';"><img src="/assets/boot.png" alt=""></a>
-        <a href="javascript:;" id="boot2" style="display: none;" onclick="document.getElementById('boot-area').style.display='none';document.getElementById('boot1').style.display='block';document.getElementById('boot2').style.display='none';"><img src="/assets/boot.png" alt=""></a>
-      </div>
+<header class="header">
+
+  <div class="header_content">
+    <label class="theme_changer">
+      <input theme_toggle type="checkbox">
+      <div class="button"></div>
+    </label>
+    <a class="header_circle" href="{{ '/' | relative_url }}">
+      <img src="{{ site.user.pic | relative_url }}" alt="{{ site.user.picAlt }}">
+    </a>
+    <span class="header_name">{{ site.user.name }}</span>
+    <span class="header_job">{{ site.user.job }}</span>
+    <span class="header_mes">{{ site.user.message }}</span>
+
+    <nav class="nav">
+      {% if site.user.aboutme %}
+      <ul class="nav_list">
+        <li class="nav_item">
+          <a href="{{ site.baseurl }}/aboutme.html">about</a>
+        </li>
+      </ul>
+      {% endif %}
+      {% for category in site.categories %}
+      {% capture cat_name %}{{ category | first }}{% endcapture %}
+      <ul class="nav_list">
+        <li class="nav_item">
+          <a href="{{ site.baseurl }}/categories/{{ cat_name }}" id="aa">{{ cat_name }}
+            ({{ category | last | size }})</a>
+        </li>
+      </ul>
+      {% endfor %}
+    </nav>
   </div>
 
 </header>
+
