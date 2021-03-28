@@ -5,7 +5,7 @@ plugins:
   - jekyll-sitemap
 
 # Site settings
-title: 'Zhichen Ren\'s Blog'
+title: "Zhichen Ren's Blog"
 subtitle: 'Welcome'
 email: 'zhichenren0124@gmail.com'
 name: 'Zhichen Ren'
