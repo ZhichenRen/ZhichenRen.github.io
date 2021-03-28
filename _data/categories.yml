@@ -1,9 +1,0 @@
-- ref: Misc
-  name:
-    default: Misc
-    en: Misc
-    zh: 杂文
-
-- ref: Jekyll
-  name:
-    default: Jekyll

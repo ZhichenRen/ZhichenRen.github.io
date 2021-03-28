@@ -1,4 +1,0 @@
-User-agent: *
-Allow: /
-
-Sitemap: https://hw311.me/sitemap.xml
