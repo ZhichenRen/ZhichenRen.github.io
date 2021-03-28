@@ -92,14 +92,14 @@ social:
 
   - name: GitHub
     icon: github
-    username: bencentra
+    username: ZhichenRen
     url: https://github.com/ZhichenRen
     desc: Fork me on GitHub
     share: true
 
   - name: LinkedIn
     icon: linkedin
-    username: Ben Centra
+    username: ZhichenRen
     url: https://www.linkedin.com/in/zhichen-ren-26278420a/
     desc: Connect with me on LinkedIn
     share: true
