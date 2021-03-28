@@ -1,383 +1,249 @@
-## HardCandy-Jekyll
+# Centrarium [![Circle CI](https://circleci.com/gh/bencentra/centrarium/tree/master.svg?style=svg)](https://circleci.com/gh/bencentra/centrarium/tree/master)
 
+A simple yet classy theme for your Jekyll website or blog. Customizable to fit your style or brand.
 
+Built with these awesome libraries:
+* [Bourbon][bourbon]
+* [Neat][neat]
+* [Bitters][bitters]
+* [Refills][refills]
+* [Font Awesome][fontawesome]
+* [HighlightJS][highlightjs]
+* [Lightbox][lightbox]
 
-### Preview
+Here's a [demo](http://bencentra.com/centrarium). It also works on [GitHub Pages](http://bencentra.github.io/centrarium/). I also use it for [my own website][bencentra].
 
-[在线预览 view demo →](http://xseven.me/)
+Inspired by dirkfabisch's [Mediator](https://github.com/dirkfabisch/mediator) theme, which I previously used for my own blog, as well as [Type Theme](http://rohanchandra.github.io/type-theme/).
 
-![1](/screenshot/1.png)
+Cover image by Chris M. Morris ([flickr][cover]).
 
-![2](/screenshot/2.png)
+## Features
 
-![3](/screenshot/3.png)
+This theme comes with a number of features, including:
+* Easily customizable fonts and colors
+* Cover images for your homepage and blog posts
+* Pagination enabled by default
+* Archiving of posts by categories and tags
+* Syntax highlighting for code snippets
+* Disqus integration for post comments
+* Lightbox for viewing full-screen photos and albums
+* Google Analytics with custom page name tracking
+* Social media integration (Twitter, Facebook, LinkedIn, GitHub, and more)
 
-想要查看手机端显示效果，扫描下方二维码浏览器打开即可
+## Installation
 
-![4](/screenshot/4.png)
+If you're just getting started with Jekyll, you can use this repository as a starting point for your own site. Just [download this project](https://github.com/bencentra/centrarium/archive/master.zip) and add all the files to your project. Add your blog posts to the `posts/` directory, and create your pages with the proper Jekyll front matter (see `posts.html` for an example).
 
+If your site already uses Jekyll, follow these steps:
 
+1. Replace the files in the `_includes`, `_layouts`, and `_sass` directories with those from this project.
+2. Replace your `index.html` with the one from this project, and copy over the `posts.html` file as well.
+3. Copy the contents of the `_config.yml` from this project in to yours, and update the necessary information.
 
-### 主题特性
-
-- 主题基于 `jekyll 3.8.1` 开发
-- 响应式布局
-- 文章标签索引
-- 文章时间线索引
-- 博主个人信息展示
-- 支持9种代码高亮主题色
-- 支持 `dispus` 、 `来必力` 、 `Gitment` 三种评论系统
-- 支持 `百度统计` 、`谷歌分析` 两种网站追踪系统
-- 支持13款不同社交平台图标及链接地址指向
-- 支持11个不同平台的文章分享路口
-
-
-
-### 开始使用
-
-#### 线上部署
-
-​	首先在 `github` 上开启一个仓库起名为 `你的github用户名.github.io` 。并 `clone` 你的仓库到本地。 然后下载 `HardCandy-Jekyll` 的 [源码](https://github.com/xukimseven/HardCandy-Jekyll) 到本地之后，将 `_config.yml` 文件更改为自己的配置（下面会介绍）。之后，将所有文件拷贝至自己的本地仓库根目录下，再上传至自己的 `github` 线上仓库，即可通过域名 `https://你的github用户名.github.io` 访问看到自己的博客页面。
-
-#### 本地部署
-
-​	首先在本地安装 `Jekyll` [详情请戳](https://www.jekyll.com.cn/docs/quickstart/)
-
-​	安装完成之后，使用命令 `jekyll -v` 查看 **jekyll版本号** ，若低于 `jekyll 3.x.x` 则需要升级至 `jekyll 3.x.x` 。 
-
-​	使用 `gem install jekyll-paginate` 或 `sudo gem install jekyll-paginate` 安装Jekyll的分页插件。
-
-​	将源码 `clone` 到本地后，在终端进入 `HardCandy-Jekyll` 根目录，运行 `jekyll server` 或 `bundle exec jekyll serve` ，即可开启jekyll的服务。通过浏览器访问 [http://localhost:4000](http://localhost:4000) ，即可看到本地部署的 `HardCandy-Jekyll` 博客了。
-
-> warning！值得注意的地方：
->
-> ​	由于本主题是基于 `jekyll 3.8.1` 开发 ，jekyll的版本差异也许会导致相关显示效果的差异。详情请参考官方文档：[news](https://jekyllrb.com/news/)
-
-
-
-### 配置文档
-
-- 开始
-  - [关于博客](#关于博客)
-  - [写文章](#写文章)
-- 组件
-  - [博主个人信息](#博主个人信息)
-  - [社交媒体](#社交媒体)
-  - [首页显示信息](#首页显示信息)
-  - [导航栏](#导航栏)
-  - [分页](#分页)
-  - [代码高亮主题](#代码高亮主题)
-  - [友情链接](#友情链接)
-  - [页脚](#页脚)
-- 第三方服务
-  - [评论系统的切换](#评论系统的切换)
-  - [文章分享的路口](#文章分享的路口)
-  - [网站流量追综的配置](#网站流量追综的配置)
-
-
-
-> ​	通用修改 `_config.yml` 文件，你便可以轻松搭建属于你自己的个人博客。
->
-> ​	一部分配置，默认已经是配置好的，你只需要修改下面列出的内容即可完成搭建。
-
-
-
-#### 关于博客
-
-```yaml
----
-# Site settings 配置站点
-title: 'your awesome title'
-description: 'your web description'
-keywords: 'your web keywords, another keywords'
-url: 'https://abc.github.io' # your host
----
+Don't forget to install Jekyll and other dependencies:
+```bash
+# cd into project directory
+cd centrarium
+# install Bundler if you don't have it already
+gem install bundler
+# install jekyll, jekyll-archives, jekyll-sitemap, and jekyll-paginate
+bundle install
 ```
 
-`title` ：用于页面的 title 标签的显示内容
+## Stackbit Deploy
 
-`description` ：网站的简介
+This theme is ready to import into Stackbit. This theme can be deployed to Netlify and you can connect any headless CMS including Forestry, NetlifyCMS, DatoCMS or Contentful. 
 
-`keywords` ：网站的关键词
+[![Create with Stackbit](https://assets.stackbit.com/badge/create-with-stackbit.svg)](https://app.stackbit.com/create?theme=https://github.com/bencentra/centrarium)
 
-`url` ：网站域名
+## Updating Header and Footer Links
 
+Links in the header and footer are auto-generated. Links will be made for all files marked `category: page`, that have a title, and have the custom `main_nav` front-matter variable set to `true`. You can modify the rules for link generation in `_layouts/nav_links.html`.
 
+## Updating Styles
 
-#### 写文章
+If you want change the CSS of the theme, you'll probably want to check out these files in the `_sass/` directory:
 
-​	博客通过解析 `markdown` 文件来部署文章页面的，所以用户写文章只需要写一篇markdown，并放置在站点根目录下的 `_post` 文件夹即可。具体的markdown语法自行上网搜索学习，或使用markdown编辑器进行写作。推荐一款 markdown编辑器：[typora](https://www.typora.io) 。支持 windows 、mac OSX 、Linux 。
+* `base/_variables.scss`: Common values found throughout the project, including base font size, font families, colors, and more.
+* `base/_typography.scss`: Base typography values for the site (see `typography.html` for a demonstration)
+* `_layout.scss`: The primary styles for the layout and design of the theme.
 
-关于文章 YAML头信息：
+### Important Variables
 
-```yaml
-layout: post
-title:  "post title"
-subtitle: 'post subtitle'
-date:   2018-05-29 08:44:13
-tags: html js css
-description: ''
-color: 'rgb(154,133,255)'
-cover: ''
+Here are the important variables from `base/_variables.scss` you can tweak to customize the theme to your liking:
+
+* `$base-font-family`: The font-family of the body text. Make sure to `@import` any new fonts!
+* `$heading-font-family`: The font-family of the headers. Make sure to `@import` any new fonts!
+* `$base-font-size`: The base font-size. Defaults to $em-base from Bourbon (`bourbon/settings/_px-to-em.scss`).
+* `$base-font-color`: The color for the body text.
+* `$action-color`: The color for links in the body text.
+* `$highlight-color`: The color for the footer and page headers (when no cover image provided).
+
+## Configuration
+
+All configuration options can be found in `_config.yml`.
+
+### Site Settings
+
+* __title:__ The title for your site. Displayed in the navigation menu, the `index.html` header, and the footer.
+* __subtitle:__ The subtitle of your site. Displayed in the `index.html` header.
+* __email:__ Your email address, displayed with the Contact info in the footer.
+* __name:__ Your name. _Currently unused._
+* __description:__ The description of your site. Used for search engine results and displayed in the footer.
+* __baseurl:__ The subpath of your site (e.g. /blog/).
+* __url:__ The base hostname and protocol for your site.
+* __cover:__ The relative path to your site's cover image.
+* __logo:__ The relative path to your site's logo. Used in the navigation menu instead of the title if provided.
+
+### Build Settings
+
+* __markdown:__ Markdown parsing engine. Default is kramdown.
+* __inter_post_navigation:__ Whether to render links to the next and previous post on each post.
+
+### Pagination settings
+
+See the documentation for [jekyll-paginate-v2](https://github.com/sverrirs/jekyll-paginate-v2/blob/master/README-GENERATOR.md#site-configuration) for more details.
+
+### Archive Settings
+
+Although this theme comes with a combined, categorized archive (see `posts.html`), you can enable further archive creation thanks to [jekyll-archives][archives]. Support for category and tag archive pages is included, but you can also add your own archive pages for years, months, and days.
+
+To change archive settings, see the __jekyll-archives__ section of `_config.yml`:
+
+```yml
+jekyll-archives:
+  enabled:
+    - categories
+    - tags
+  layout: 'archive'
+  permalinks:
+    category: '/category/:name/'
+    tag: '/tag/:name/'
 ```
 
-关于color：
+To fully disable the archive, remove the __jekyll-archives__ section AND remove it from the __gems__ list.
 
-​	此处的color用于post页面的顶部位置的背景色。如上面展示图所示为 `rgb(154,133,255)` 色。
+__NOTE:__ the Jekyll Archive gem is NOT included with GitHub pages! Disable the archive feature if you intend to deploy your site to GitHub pages. [Here is a guide](http://ixti.net/software/2013/01/28/using-jekyll-plugins-on-github-pages.html) on how you can use the `jekyll archive` gem with GitHub pages. The general gist: compile the Jekyll site locally and then push that compiled site to GitHub.
 
-​	对于color的书写，如果颜色代码为 `rgb` 或 `rgba` 又或是 `英文单词` 的话，可以不用引号包裹，但如果颜色代码为 `#123456` 这种16进制码的话，就必须使用引号包裹。所以，在使用中，推荐一致都使用引号，以免错误使用。
+A sitemap is also generated using [jekyll-sitemap][sitemap].
 
-​	当然，如果你在书写文章时，忘记写color的值的话，主题默认会为你填写 `rgb(154,133,255)` 色。就是上图显示的颜色。虽然不影响页面的显示，但如果想要更多彩的页面效果的话，建议在每一篇的头信息里写上 color 值。
+### Syntax Highlighting Settings
 
-关于cover：
+Inside of a post, you can enable syntax highlighting with the `{% highlight <language> %}` Liquid tag. For example:
 
-​	此处需填写某一张图片的 `url` ，`url` 值可以是线上的某张图片，也可以是博客目录下的图片。关键是要书写正确。这张图片用于在首页下博客列表里显示，如下图。
-
-![5](/screenshot/5.png)
-
-
-
-#### 博主个人信息
-
-```yaml
-# 博主
-author: true
-name: 'your awesome name'
-NickName: 'your awesome nickname'
-webtitle: 'your awesome webtitle'
-bio: 'your awesome bio'
-about: true
-aboutyou: 'your introduction'
-portraits: '/assets/profile.jpeg' # your portraits image file path
 ```
-
-​	该部分显示在 `关于博主` 页面，与 `社交媒体` 一同在下图显示。
-
-![6](/screenshot/6.png)
-
-关于author：
-
-​	使用 `true` 或者 `false` 来打开或关闭博主信息卡片，默认 true ，最佳体验也是 true 。
-
-关于about：
-
-​	使用 `true` 或者 `false` 来打开或关闭博主关于信息，即是否显示 aboutyou 部分的信息。默认 true ，该部分需要在 aboutyou 中输入相关信息，支持在此填写html代码。
-
-
-
-#### 社交媒体
-
-```yaml
-# SNS
-SNS: true
-SNS-icon: #['Facebook', 'weibo', 'qq', 'github', 'Dribbble', 'Twitter', 'instagram', 'weixin', 'Codepen']
-  mail: 'mailto:abc@gmail.com'
-  weixin: '' # 你的微信二维码存放的地址
-  qq: '' # 你的qq二维码存放的地址 or http://wpa.qq.com/msgrd?v=3&uin='你的QQ号'&site=qq&menu=yes
-  github: ''
-  Codepen: ''
-  weibo: ''
-  instagram: ''
-  Twitter: ''
-  Dribbble: ''
-  Facebook: ''
-  Google: ''
-  zhihu: ''
-  juejin: ''
-  twitch: ''
-```
-
-​	~~主题一共配置了 13种 社交媒体的图标，只要在需要开启的社交账号的名字后填写你的个人主页链接即可，不需要开启的就在那一行的头部用 `#` 注释这一行即可。同样的，如果需要更换每个图标的排列位置，只需要改变他们的每一行排列的顺序即可。~~
-
-​	在 `SNS` 后填写  `true` 或者 `false` 来打开或者关闭这一部分。
-
-2018/09/28 更新：
-
-![7](/screenshot/sns-icon.png)
-
-- 更新社交图标为 线上地址 ，便于管理与修改。
-- 添加 **Codepen** 图标
-- 修改原来的圆形图标为不规则图标
-
-
-
-#### 首页显示信息
-
-```yaml
----
-layout: default
-title: your awesome title
-page-title: awesome page-title.
-home-title: awesome home-title.
-description: description
----
-```
-
-​	该部分位于 `index.html` 页面，修改 `title` 、`page-title` 、`home-title`  、`description`为个人想要的信息，默认配置的显示效果如下图。
-
-![7](/screenshot/7.png)
-
-
-
-#### 导航栏
-
-```yaml
-# nav 中文字符空格：&emsp;
-nav: # 最佳体验 六个标签 且最好每个标签不超过4中文字
-  首页: '/'
-  标签: '/tags.html'
-  时间线: '/timeline.html'
-  关于博主: '/about.html'
-  友情链接: '/friendLink.html'
-```
-
-​	默认全部开启他们，当然如果想要自己添加，按照格式填在下方即可，当然页面显示顺序与每一行的位置有关。
-
-
-
-#### 分页
-
-```yaml
-# 分页
-paginate: 2
-paginatepath: ['page:num']
-```
-
-​	随个人爱好在，在上面填写你需要的在首页一页最多显示多少篇博客的数字。
-
-​	本地部署的需要使用 `gem install jekyll-paginate` 或 `sudo gem install jekyll-paginate` 安装Jekyll的分页插件。
-
-
-
-#### 代码高亮主题
-
-```yaml
-# 代码高亮 使用rouge
-highlighter: rouge
-# 代码高亮主题使用pygments主题: autumn\ default\ emacs\ friendly\ manni\ murphy\ pastie\ perldoc\ tango 任选一个你喜欢的主题名称填在下面的单引号中
-pygmentsTheme: 'default'
-```
-
-​	代码高亮使用 jekyll3.0 之后的默认高亮引擎 `rouge` 。关于主题，只需要在 `pygmentsTheme` 后填写喜欢的主题名称即可。共有9款主题可选，主题名见上文。
-
-​	代码高亮的写法：
-
-~~~markdown
-``` css
-*{
- margin:0;
- padding:0;
+{% highlight javascript %}
+function demo(string, times) {
+  for (var i = 0; i < times; i++) {
+    console.log(string);
+  }
 }
-```
-~~~
-
-2018/09/28 更新：
-
-![7](/screenshot/博客代码高亮例子.png)
-
-上图为 **代码高亮试例图** ，仅以 html 作为参考例子，其他代码参考 上图，或自行切换测试选择自己喜欢的代码高亮主题
-
-
-
-#### 友情链接
-
-```yaml
-# 友情链接
-friends:
-  jekyll: 'https://www.jekyll.com.cn/'
+demo("hello, world!", 10);
+{% endhighlight %}
 ```
 
-​	按格式填写即可，排序与配置文件里的排序有关。
+You can change the [HighlightJS theme][highlightjs_theme] in `_config.yml`:
 
-
-
-#### 页脚
-
-```yaml
-# since
-footer:
-  since: 2018
+```yml
+highlightjs_theme: "monokai_sublime"
 ```
 
-​	用于页脚显示时间。
+### Disqus Settings
 
+You can enable [Disqus][disqus] comments for you site by including one config option:
 
+* __disqus_shortname:__ Your Disqus username. If the property is set, Disqus comments will be included with your blog posts.
 
-#### 评论系统的切换
+If you want to disable Disqus for only a specific page, add __disqus_disabled: true__ to the page's front matter.
 
-```yaml
-# 评论 最佳体验 在disqus、livere和Gitment之间三选一
-# disqus 评论
-disqus: false
-disqus_url: '' # https://abc.disqus.com/embed.js
-# 来必力评论
-livere: true
-livere_uid: 'MTAyMC8zNDI2OS8xMDgwNg==' # MTAyMC8zNDI2OS8xMDgwNg==
-# Gitment评论 OAuth Application
-Gitment: false
-Gitment_owner: ''  # github用户名
-Gitment_repo: ''  # github博客存放的仓库名
-client_id: ''  # 注册 OAuth Application 后获得的 client_id
-client_secret: ''  # 注册 OAuth Application 后获得的 client_secret
+### Google Analytics Settings
+
+You can enable basic [Google Analytics][ga] pageview tracking by including your site's tracking ID:
+
+* __ga_tracking_id__: The Tracking ID for your website. You can find it on your Google Analytics dashboard. If the property is set, Google Analytics will be added to the footer of each page.
+
+### Social Settings
+
+Your personal social network settings are combined with the social sharing options. In the __social__ section of `_config.yml`, include an entry for each network you want to include. For example:
+
+```yml
+social:
+  - name: Twitter                         # Name of the service
+    icon: twitter                         # Font Awesome icon to use (minus fa- prefix)
+    username: TheBenCentra                # (User) Name to display in the footer link
+    url: https://twitter.com/TheBenCentra # URL of your profile (leave blank to not display in footer)
+    desc: Follow me on Twitter            # Description to display as link title, etc
+    share: true                           # Include in the "Share" section of posts
 ```
 
-​	按申请第三方评论是获取的相关信息在配置文件中进行填写即可。
+### Social Protocols
 
-​	共有三款评论可供选择，使用 `true` 或者 `false` 开启或关闭某个评论系统。可开启多个甚至全开。当然，最佳体验，开一个即可。
+Using the Open Graph Protocol or Twitter Card metadata, you can automatically set the images and text used when people share your site on Twitter or Facebook. These take a bit of setup, but are well worth it. The relevant fields are at the end of the `_config.yml` file.
 
-​	三款评论的样式如下图：
+Also there is another protocol, the Open Source protocol, for saying where your site is hosted if the source is open. This helps develops more easily see your code if they are interested, or if they have issues. For more, see http://osprotocol.com.
 
-dispus：
+### Category Descriptions
 
-![8](/screenshot/8.png)
+You can enhance the `posts.html` archive page with descriptions of your post categories. See the __descriptions__ section of `_config.yml`:
 
-来必力：
-
-![9](/screenshot/9.png)
-
-Gitment评论：
-
-![10](/screenshot/10.png)
-
-​	三款评论各有各的优势与坏处。出于显示样式与中国大陆网络环境考虑，主题默认开启 `来必力` 评论为最佳体验。当然需要填写好相关的 `livere_uid` 代码。
-
-
-
-#### 文章分享的路口
-
-```yaml
-# Share : weibo, qq, wechat, tencent, douban, qzone, linkedin, diandian, facebook, twitter, google
-social-share: true
-social-share-items: ['qq', 'wechat', 'weibo', 'twitter', 'facebook']
+```yml
+# Category descriptions (for archive pages)
+descriptions:
+  - cat: jekyll
+    desc: "Posts describing Jekyll setup techniques."
 ```
 
-​	为了让文章更方便地分享，使用了第三方分享插件[Share.js](http://overtrue.github.io/share.js/)，支持一键分享到微博、QQ空间、QQ好友、微信、腾讯微博、豆瓣、Facebook、Twitter、Linkedin、Google+、点点等社交网站。
+### Custom Page-Specific Javascript
 
-​	只需要填写相关的名称在 `social-share-items` 后即可，显示顺序与书写顺序有关。
+You can add page-specific javascript files by adding them to the top-level `/js` directory and including the filename in the __custom_js__ page's configuration file:
 
-
-
-#### 网站流量追综的配置
-
-```yaml
-# 百度统计 在baidu-url里填写自己相关的url代码
-baidu: true
-baidu-url: ''
-# 谷歌分析 在google-ID里填写自己在谷歌分析获得的追踪ID
-google: false
-google-ID: ''
+```yml
+# Custom js (for individual pages)
+---
+layout: post
+title:  "Dummy Post"
+date:   2015-04-18 08:43:59
+author: Ben Centra
+categories: Dummy
+custom_js:
+- Popmotion
+- Vue
+---
 ```
 
-​	在 `baidu-url` 和 `google-ID` 分别填上注册获取的相关信息。使用 `true` 或者 `false` 开启或关闭他们。出于中国大陆网络环境，默认开启 百度统计 ，当然可以多开。
+The `/js/` directory would contain the corresponding files:
 
+```bash
+$ ls js/
+Popmotion.js Vue.js
+```
 
+## Contributing
 
-### License 许可证
+Want to help make this theme even better? Contributions from the community are welcome!
 
-HardCandy-Jekyll is licensed under [MIT](https://github.com/xukimseven/HardCandy-Jekyll/blob/master/LICENSE).
+Please follow these steps:
 
+1. Fork/clone this repository.
+2. Develop (and test!) your changes.
+3. Open a pull request on GitHub. A description and/or screenshot of changes would be appreciated!
+4. I ([Ben Centra](https://github.com/bencentra)) will review and merge the pull request.
 
+## License
 
-### 求Star 求关注
+MIT. See [LICENSE.MD](https://github.com/bencentra/centrarium/blob/master/LICENSE.md).
 
-看到这里，如果你喜欢我的小项目，欢迎下载使用他，也请你为我点个小星星 😜 ，多谢。
+[bencentra]: http://bencentra.com
+[bourbon]: http://bourbon.io/
+[neat]: http://neat.bourbon.io/
+[bitters]: http://bitters.bourbon.io/
+[refills]: http://refills.bourbon.io/
+[fontawesome]: http://fortawesome.github.io/Font-Awesome/
+[highlightjs]: https://highlightjs.org/
+[highlightjs_theme]: https://highlightjs.org/static/demo/
+[lightbox]: http://lokeshdhakar.com/projects/lightbox2/
+[cover]: https://www.flickr.com/photos/79666107@N00/3796678503/in/photolist-6MuYfc-61Rtft-8XzPmY-a6Cozm-54eSMs-6oMJmk-aepZQq-9YkPHp-fiAEGE-dVP4Z5-oxPyJP-atKUFJ-9YHWA5-9YF2f2-9YF2gR-9YHVGN-9YHVvs-qZYYQ6-4JqP2i-a2peGy-9YHVUm-9YHVF7-9YHVCL-9YF3NK-cYteMo-aiPmb9-69dtAi-9YF21x-4aWpmn-7SLiUL-77pqVX-8vXbYv-4HGDSH-a2h5P1-8LsZrQ-9aj1ez-auPZ7q-9YHVMd-9YF2bi-9YF23D-8LpWpn-9an6KL-9YHVZL-dqZ3Cz-2GuvnX-9YHWUo-9YHVWd-p5Roh5-i1zTbv-6sYrUT
+[disqus]: https://disqus.com/
+[ga]: http://www.google.com/analytics/
+[archives]: https://github.com/jekyll/jekyll-archives
+[sitemap]: https://github.com/jekyll/jekyll-sitemap
