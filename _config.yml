@@ -1,6 +1,3 @@
-exclude:
-  - "/vendor/"
-
 plugins:
   - jemoji
   - jekyll-sitemap
