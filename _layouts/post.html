@@ -146,25 +146,25 @@ layout: default
 					Disqus.</a></noscript>
 			<a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
 		</section>
-		<script type="text/x-mathjax-config">
-        MathJax.Hub.Config({
-        tex2jax: {
-          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
-          inlineMath: [['$','$'], ['\\(','\\)']],
-          processEscapes: true
-        },
-        TeX: {
-          equationNumbers: {
-            autoNumber: "AMS"
-          }
-        }
-      });
-    </script>
-		<script type="text/javascript" async
-			src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_CHTML">
-		</script>
 		{% endunless %}
 		{% endif %}
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+      tex2jax: {
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+        inlineMath: [['$','$'], ['\\(','\\)']],
+        processEscapes: true
+      },
+      TeX: {
+        equationNumbers: {
+          autoNumber: "AMS"
+        }
+      }
+    });
+  </script>
+  <script type="text/javascript" async
+    src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_CHTML">
+  </script>
 
 	</div>
 </div>
