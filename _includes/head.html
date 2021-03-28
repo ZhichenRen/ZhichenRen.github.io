@@ -3,8 +3,37 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
-  <title>{% if page.title %}{{ page.title }}{% else %}{{ site.title }}{% endif %}</title>
-  <meta name="description" content="{% if page.excerpt %}{{ page.excerpt | strip_html | strip_newlines | truncate: 160 }}{% else %}{{ site.description }}{% endif %}">
+  <title>
+    {% if page.html_title %}
+      {{ page.html_title }}
+    {% elsif page.title %}
+      {{ page.title }}
+    {% else %}
+      {% if site.data.i18n['title'][page.lang] %}
+        {{ site.data.i18n['title'][page.lang] }}
+      {% else %}
+        {{ site.data.i18n['title']['default'] }}
+      {% endif %}
+    {% endif %}
+  </title>
+  <meta name="title" content="{% if page.html_title %}{{ page.html_title }}
+  {% elsif page.title %}{{ page.title }}
+  {% else %}
+    {% if site.data.i18n['title'][page.lang] %}
+      {{ site.data.i18n['title'][page.lang] }}
+    {% else %}
+      {{ site.data.i18n['title']['default'] }}
+    {% endif %}
+  {% endif %}">
+  <meta name="description" content="{% if page.excerpt %}{{ page.excerpt | strip_html | strip_newlines | truncate: 160 }}{% else %}
+  {% if site.data.i18n['description'][page.lang] %}
+    {{ site.data.i18n['description'][page.lang] }}
+  {% else %}
+    {{ site.data.i18n['description']['default'] }}
+  {% endif %}{% endif %}">
+  {% if page.tags %}
+  <meta name="keywords" content="{{ page.tags | join: ',' | strip_html | strip_newlines }}">
+  {% endif %}
   {% if site.name %}
   <meta name="author" content="{{ site.name }}">
   <meta name="copyright" content="&copy; {{ site.name }} {{ site.time | date: '%Y' }}">
@@ -14,6 +43,24 @@
   <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css">
   <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/styles/{{ site.highlightjs_theme }}.min.css">
   <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/lightbox2/2.7.1/css/lightbox.css">
+
+  <script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      tex2jax: {
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+        inlineMath: [['$','$'], ['\\(','\\)']],
+        processEscapes: true
+      },
+      TeX: {
+        equationNumbers: {
+          autoNumber: "AMS"
+        }
+      }
+    });
+  </script>
+  <script type="text/javascript" async
+    src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS_CHTML">
+  </script>
 
   <!-- Favicon and other icons (made with http://www.favicon-generator.org/) -->
   <link rel="shortcut icon" href="{{ "/assets/icons/favicon.ico" | prepend: site.baseurl }}" type="image/x-icon">
@@ -38,10 +85,22 @@
 
   {% if site.protocols.fb_image %}
   <!-- Facebook OGP cards -->
-  <meta property="og:description" content="{% if page.excerpt %}{{ page.excerpt | strip_html | strip_newlines | truncate: 160 }}{% else %}{{ site.description }}{% endif %}" />
-  <meta property="og:url" content="{% if page.url %}{{ site.url }}{{ page.url }}{% else %}{{ site.url }}{% endif %}">
-  <meta property="og:site_name" content="{{ site.title }}" />
-  <meta property="og:title" content="{% if page.title %}{{ page.title }}{% else %}{{ site.title }}{% endif %}" />
+  <meta property="og:description" content="{% if page.excerpt %}{{ page.excerpt | strip_html | strip_newlines | truncate: 160 }}{% else %}{% if site.data.i18n['description'][page.lang] %}
+    {{ site.data.i18n['description'][page.lang] }}
+  {% else %}
+    {{ site.data.i18n['description']['default'] }}
+  {% endif %}{% endif %}" />
+  <meta property="og:url" content="{{ site.url }}" />
+  <meta property="og:site_name" content="{% if site.data.i18n['title'][page.lang] %}
+    {{ site.data.i18n['title'][page.lang] }}
+  {% else %}
+    {{ site.data.i18n['title']['default'] }}
+  {% endif %}" />
+  <meta property="og:title" content="{% if page.html_title %}{{ page.html_title }}{% elsif page.title %}{{ page.title }}{% else %}{% if site.data.i18n['title'][page.lang] %}
+    {{ site.data.i18n['title'][page.lang] }}
+  {% else %}
+    {{ site.data.i18n['title']['default'] }}
+  {% endif %}{% endif %}" />
   <meta property="og:type" content="website" />
   <meta property="og:image" content="{% if page.cover %}{{ page.cover | prepend: site.baseurl | prepend: site.url }}{% else %}{{ site.protocols.fb_image | prepend: site.baseurl | prepend: site.url }}{% endif %}" />
   <meta property="og:image:type" content="{{ site.protocols.fb_image_type }}" />
@@ -52,15 +111,23 @@
   {% if site.protocols.twitter_image %}
   <!-- Twitter: card tags -->
   <meta name="twitter:card" content="summary">
-  <meta name="twitter:title" content="{% if page.title %}{{ page.title }}{% else %}{{ site.title }}{% endif %}">
-  <meta name="twitter:description" content="{% if page.excerpt %}{{ page.excerpt | strip_html | strip_newlines | truncate: 160 }}{% else %}{{ site.description }}{% endif %}">
+  <meta name="twitter:title" content="{% if page.html_title %}{{ page.html_title }}{% elsif page.title %}{{ page.title }}{% else %}{% if site.data.i18n['title'][page.lang] %}
+    {{ site.data.i18n['title'][page.lang] }}
+  {% else %}
+    {{ site.data.i18n['title']['default'] }}
+  {% endif %}{% endif %}">
+  <meta name="twitter:description" content="{% if page.excerpt %}{{ page.excerpt | strip_html | strip_newlines | truncate: 160 }}{% else %}{% if site.data.i18n['description'][page.lang] %}
+    {{ site.data.i18n['description'][page.lang] }}
+  {% else %}
+    {{ site.data.i18n['description']['default'] }}
+  {% endif %}{% endif %}">
   <meta name="twitter:image" content="{% if page.cover %}{{ page.cover | prepend: site.baseurl | prepend: site.url }}{% else %}{{ site.protocols.twitter_image | prepend: site.baseurl | prepend: site.url }}{% endif %}">
-  <meta name="twitter:url" content="{% if page.url %}{{ site.url }}{{ page.url }}{% else %}{{ site.url }}{% endif %}">
+  <meta name="twitter:url" content="{{ site.url }}">
   {% endif %}
 
   {% if protocols.os_repo and protocols.os_rcs_type and protocols.os_src %}
   <!-- Open Source Protocol -->
-  <link rel="profile" href="http://osprotocol.com" />
+  <link rel="profile" href="https://osprotocol.com" />
   <meta property="os:repo" content="{{ protocols.os_repo }}" />
   <meta property="os:rcs_type" content="{{ protocols.os_rcs_type }}" />
   <meta property="os:src" content="{{ protocols.os_src }}" />
@@ -69,10 +136,20 @@
   <!-- Site styles -->
   <link rel="stylesheet" href="{{ "/css/main.css" | prepend: site.baseurl }}">
   <link rel="canonical" href="{{ page.url | replace:'index.html','' | prepend: site.baseurl | prepend: site.url }}">
-	<link rel="alternate" type="application/rss+xml" title="{{ site.title }}" href="{{ "/feed.xml" | prepend: site.baseurl | prepend: site.url }}" />
-	
-	<!-- Tooltips -->
-	<script type="text/javascript">
-		window.tooltips = []
-	</script>
+  <link rel="alternate" type="application/rss+xml" title=
+  "{% if site.data.i18n['title'][page.lang] %}{{ site.data.i18n['title'][page.lang] }}{% else %}{{ site.data.i18n['title']['default'] }}{% endif %}" href="{{ site.url }}{{ site.baseurl }}/{{ page.lang }}/feed.xml"/>
+
+  {% assign pages = site.pages | where:"ref", page.ref %}
+  {% assign posts = site.posts | where:"ref", page.ref %}
+  {% assign ps = pages | concat: posts %}
+  {% assign en_page = ps | where:"lang", "en" %}
+  {% assign zh_page = ps | where:"lang", "zh" %}
+
+  {% if zh_page.size > 0 %}
+  <link rel="alternate" hreflang="zh" href="{{ site.url }}{{ site.baseurl }}{{ zh_page[0].url }}">
+  {% endif %}
+  {% if en_page.size > 0 %}
+  <link rel="alternate" hreflang="en" href="{{ site.url }}{{ site.baseurl }}{{ en_page[0].url }}">
+  <link rel="alternate" hreflang="x-default" href="{{ site.url }}{{ site.baseurl }}{{ en_page[0].url }}">
+  {% endif %}
 </head>

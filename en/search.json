@@ -1,0 +1,31 @@
+---
+layout: null
+---
+[
+  {% for post in site.posts %}
+  {% if post.lang == 'en' %}
+    {
+      "title"      : {{ post.title | jsonify }},
+      "html_title" : {{ post.html_title | jsonify }},
+      "categories" : "{{ post.categories | join: " " }}",
+      "tags"       : "{{ post.tags | join: " " }}",
+      "url"        : "{{ site.baseurl }}{{ post.url }}",
+      "date"       : "{{ post.date }}",
+      "lang"       : "{{ post.lang }}",
+      "content"    : {{ post.content | jsonify }}
+    }
+  {% else %}
+    {
+      "title"      : "",
+      "html_title" : "",
+      "categories" : "",
+      "tags"       : "",
+      "url"        : "",
+      "date"       : "",
+      "lang"       : "",
+      "content"    : ""
+    }
+  {% endif %}
+  {% unless forloop.last %},{% endunless %}
+  {% endfor %}
+]

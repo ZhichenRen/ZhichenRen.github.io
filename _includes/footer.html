@@ -2,19 +2,55 @@
 
   <div class="wrapper">
 
-    <h3 class="footer-heading">{{ site.title }}</h3>
+    <h3 class="footer-heading">
+      {% if site.data.i18n['title'][page.lang] %}
+        {{ site.data.i18n['title'][page.lang] }}
+      {% else %}
+        {{ site.data.i18n['title']['default'] }}
+      {% endif %}
+      <span class="footer-desc">&nbsp;
+        {% if site.data.i18n['description'][page.lang] %}
+          {{ site.data.i18n['description'][page.lang] }}
+        {% else %}
+          {{ site.data.i18n['description']['default'] }}
+        {% endif %}
+      </span>
+    </h3>
 
     <div class="site-navigation">
-
-      <p><strong>Site Map</strong></p>
+      <p><strong>
+        {% if site.data.i18n['sitemap'][page.lang] %}
+          {{ site.data.i18n['sitemap'][page.lang] }}
+        {% else %}
+          {{ site.data.i18n['sitemap']['default'] }}
+        {% endif %}
+      </strong></p>
       <ul class="pages">
-				{% include nav_links.html %}
+        <li class="nav-link"><a href="/{{ page.lang }}/about/">
+          {% if site.data.i18n['about'][page.lang] %}
+            {{ site.data.i18n['about'][page.lang] }}
+          {% else %}
+            {{ site.data.i18n['about']['default'] }}
+          {% endif %}
+        </a></li>
+        <li class="nav-link"><a href="/{{ page.lang }}/posts/">
+          {% if site.data.i18n['posts'][page.lang] %}
+            {{ site.data.i18n['posts'][page.lang] }}
+          {% else %}
+            {{ site.data.i18n['posts']['default'] }}
+          {% endif %}
+        </a></li>
       </ul>
     </div>
 
     <div class="site-contact">
-
-      <p><strong>Contact</strong></p>
+      <p><strong>
+        {% if site.data.i18n['contact'][page.lang] %}
+          {{ site.data.i18n['contact'][page.lang] }}
+        {% else %}
+          {{ site.data.i18n['contact']['default'] }}
+        {% endif %}
+      </strong></p>
       <ul class="social-media-list">
         <li>
           <a href="mailto:{{ site.email }}">
@@ -24,7 +60,7 @@
         </li>
 
         {% for social in site.social %}
-          {% if social.url != "" %}
+          {% if social.url != null %}
           <li>
             <a href="{{ social.url }}" title="{{ social.desc }}">
               <i class="fa fa-{{ social.icon }}"></i>
@@ -38,8 +74,37 @@
     </div>
 
     <div class="site-signature">
-      <p class="rss-subscribe text"><strong>Subscribe <a href="{{ "/feed.xml" | prepend: site.baseurl }}">via RSS</a></strong></p>
-      <p class="text">{{ site.description }}</p>
+      <p><strong>
+        {% if site.data.i18n['language'][page.lang] %}
+          {{ site.data.i18n['language'][page.lang] }}
+        {% else %}
+          {{ site.data.i18n['language']['default'] }}
+        {% endif %}
+      </strong></p>
+      <ul>
+        {% assign pages = site.pages | where:"ref", page.ref %}
+        {% assign posts = site.posts | where:"ref", page.ref %}
+        {% assign ps = pages | concat: posts %}
+        {% assign en_page = ps | where:"lang", "en" %}
+        {% assign zh_page = ps | where:"lang", "zh" %}
+        <li class="nav-link"><a class="rm-pad-right" href="{% if en_page.size > 0 %}{{ en_page[0].url }}{% else %}/404.html{% endif %}">En</a>|<a href="{% if zh_page.size > 0 %}{{ zh_page[0].url }}{% else %}/404.html{% endif %}">中</a></li>
+      </ul>
+      <br>
+      <p class="rss-subscribe text"><strong>
+        {% if site.data.i18n['subscribe_via'][page.lang] %}
+          {{ site.data.i18n['subscribe_via'][page.lang] }}
+        {% else %}
+          {{ site.data.i18n['subscribe_via']['default'] }}
+        {% endif %}&nbsp;<a href="/{{ page.lang }}/feed.xml" onclick="ga('send', 'event', 'RSS', 'subscribe');">
+          <i class="fa fa-rss-square fa-lg"></i> RSS</a></strong></p>
+    </div>
+
+    <div class="footernote">
+      Powered by <a href="https://jekyllrb.com/">Jekyll</a> on <a href="https://pages.github.com/">GitHub Pages</a>.
+      &nbsp;|&nbsp;
+      Template <a href="https://github.com/zixu-w/jekyll-theme-hw311">HW311</a>, modified from <a href="https://github.com/bencentra/centrarium">Centrarium</a> by Zixu Wang.
+      &nbsp;|&nbsp;
+      &copy; {{ site.time | date: '%Y' }} {{ site.name }}. All rights reserved.
     </div>
 
   </div>
@@ -47,11 +112,9 @@
 </footer>
 
 <!-- Scripts -->
-<script src="//code.jquery.com/jquery-3.4.1.min.js"></script>
-<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.10/highlight.min.js"></script>
-<script src="//cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.1/js/lightbox.min.js"></script>
-<script src="//unpkg.com/popper.js@1"></script>
-<script src="//unpkg.com/tippy.js@5"></script>
+<script src="//code.jquery.com/jquery-1.11.2.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.5/highlight.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/lightbox2/2.7.1/js/lightbox.min.js"></script>
 
 <script type="text/javascript">
 $(document).ready(function() {
@@ -69,15 +132,6 @@ $(document).ready(function() {
       }
     });
   });
-
-	// Enable tooltips via Tippy.js
-	if (Array.isArray(window.tooltips)) {
-		window.tooltips.forEach(function(tooltip) {
-			var selector = tooltip[0];
-			var config = tooltip[1];
-			tippy(selector, config);
-		})
-	}
 });
 
 </script>
