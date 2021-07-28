@@ -17,10 +17,8 @@ Hello there! My name is Zhichen Ren, a sophomore at Tongji University, China, ma
 Besides, there may be some course notes.
 
 What I am doing now:
-- Operating System (CS162)
+- CSAPP
 - Deep Learning
-- Web Application (Course project)
-- IOS Application (Course project)
 
 [centrarium]: https://github.com/bencentra/centrarium
 [bencentra]: http://bencentra.com
